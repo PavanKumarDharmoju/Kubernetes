@@ -10,7 +10,7 @@ This project demonstrates a simple web application using MongoDB running on Kube
 - kubectl (to interact with your Kubernetes cluster)
 - Git (for version control)
 
-I followed this tutorial on macOS Ventura with Docker Desktop v4.17. Keep in mind that Docker has changed how it integrates with the host's network. On Linux, Docker creates a new network interface for containers, but on macOS, this behavior has changed, and you will need to set up network tunneling, as explained below.
+I followed this tutorial on macOS Ventura with Docker Desktop v4.34. Keep in mind that Docker has changed how it integrates with the host's network. On Linux, Docker creates a new network interface for containers, but on macOS, this behavior has changed, and you will need to set up network tunneling, as explained below.
 
 ---
 
@@ -215,23 +215,41 @@ replicaset.apps/webapp-deployment-bd7557f5c   1         1         1       31m
 ```
 ## 7. Accessing the Web App
 
-On macOS Ventura with Docker Desktop v4.17, Docker no longer exposes the Minikube IP in the host's routing table. Instead, use the following command to access the web app:
+On macOS Ventura with Docker Desktop v4.34, Docker no longer exposes the Minikube IP in the host's routing table. Instead, use the following command to access the web app:
 
 ```bash
 minikube service webapp-service
 ```
 This command will create a tunnel to the service and open it in your browser. The output will look something like this:
 ```bash
+|-----------|----------------|-------------|---------------------------|
+| NAMESPACE |      NAME      | TARGET PORT |            URL            |
+|-----------|----------------|-------------|---------------------------|
+| default   | webapp-service |        3000 | http://192.168.49.2:30067 |
+|-----------|----------------|-------------|---------------------------|
 🏃  Starting tunnel for service webapp-service.
-|-----------|-----------------|-------------|------------------------|
-| NAMESPACE |      NAME        | TARGET PORT |          URL           |
-|-----------|-----------------|-------------|------------------------|
-| default   | webapp-service   |             | http://127.0.0.1:XXXX  |
-|-----------|-----------------|-------------|------------------------|
+|-----------|----------------|-------------|------------------------|
+| NAMESPACE |      NAME      | TARGET PORT |          URL           |
+|-----------|----------------|-------------|------------------------|
+| default   | webapp-service |             | http://127.0.0.1:50508 |
+|-----------|----------------|-------------|------------------------|
+🎉  Opening service default/webapp-service in default browser...
+❗  Because you are using a Docker driver on darwin, the terminal needs to be open to run it.
 ```
-Open the URL provided (e.g., http://127.0.0.1:XXXX) to access the web app.
+The URL automatically opens in the browser if it doesn't click on the URL to open it.
 
 Note for macOS Users: Unlike Linux, where Docker exposes a network interface for containers, macOS requires this tunneling process to communicate with Minikube services.
+
+## 8. Verify the changes
+The Dashboard looks something similar to this
+![User Profile](.\UserProfile1.png "Initial Profile")
+
+Click on Edit profile button and enter new details and update the profile, this should update the details that are stored in our MongoDB database
+
+![User Profile](.\UserProfile2.png "Final Profile")
+
+Now refresh the page and the updated details should be shown, this verfies that all of our integrations are working perfectly.
+
 
 ## 8. Conclusion
 
