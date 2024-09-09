@@ -242,11 +242,11 @@ Note for macOS Users: Unlike Linux, where Docker exposes a network interface for
 
 ## 8. Verify the changes
 The Dashboard looks something similar to this
-![User Profile](.\UserProfile1.png "Initial Profile")
+![User Profile](./images/UserProfile1.png "Initial Profile")
 
 Click on Edit profile button and enter new details and update the profile, this should update the details that are stored in our MongoDB database
 
-![User Profile](.\UserProfile2.png "Final Profile")
+![User Profile](./images/UserProfile2.png "Final Profile")
 
 Now refresh the page and the updated details should be shown, this verfies that all of our integrations are working perfectly.
 
