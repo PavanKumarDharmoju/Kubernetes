@@ -242,6 +242,7 @@ Note for macOS Users: Unlike Linux, where Docker exposes a network interface for
 
 ## 8. Verify the changes
 The Dashboard looks something similar to this
+
 ![User Profile](./images/UserProfile1.png "Initial Profile")
 
 Click on Edit profile button and enter new details and update the profile, this should update the details that are stored in our MongoDB database
@@ -250,13 +251,14 @@ Click on Edit profile button and enter new details and update the profile, this 
 
 Now refresh the page and the updated details should be shown, this verfies that all of our integrations are working perfectly.
 
+---
 
-## 8. Conclusion
+## 9. Conclusion
 
 By following this tutorial, you’ve successfully deployed a MongoDB database and a simple web application on Kubernetes using Minikube. This project is a stepping stone in learning Kubernetes and demonstrates how to work with ConfigMaps, Secrets, Deployments, and Services.
 
 ---
 
-## 9. Special Thanks
+## 10. Special Thanks
 
 A huge thank you to Nana Janashia for her excellent crash course on Kubernetes, which served as the foundation for this project.
